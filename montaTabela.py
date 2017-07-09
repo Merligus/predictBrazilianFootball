@@ -58,19 +58,23 @@ with open("Scouts2.csv", "r",  encoding="utf8") as csvfile:
 	dest = open("Tabela.csv", "w")
 	dest.write("Variavel,Media,Preco atual,Preco var,FS,PE,A,FT,FD,FF,G,I,PP,RB,FC,GC,CA,CV,SG,DD,DP,GS\n")
 	dest.write("MediaS,")
-	for item in mediaS:
+	for item in mediaS[:-1]:
 		dest.write(str(item) + ",")
+	dest.write(str(mediaS[-1]))
 	dest.write("\n")
 	dest.write("DesvioS^2,")
-	for item in desvioS:
+	for item in desvioS[:-1]:
 		dest.write(str(item) + ",")
-	dest.write("\n" + str(nS/(nN+nS)) + "\n")
+	dest.write(str(desvioS[-1]))
+	dest.write("\nP(S)," + str(nS/(nN+nS)) + "\n")
 
 	dest.write("MediaN,")
-	for item in mediaN:
+	for item in mediaN[:-1]:
 		dest.write(str(item) + ",")
+	dest.write(str(mediaN[-1]))
 	dest.write("\n")
 	dest.write("DesvioN^2,")
-	for item in desvioN:
+	for item in desvioN[:-1]:
 		dest.write(str(item) + ",")
-	dest.write("\n" + str(nN/(nN+nS)) + "\n" + str(nN+nS))
+	dest.write(str(desvioN[-1]))
+	dest.write("\nP(N)," + str(nN/(nN+nS)) + "\nnInstancias," + str(nN+nS))
